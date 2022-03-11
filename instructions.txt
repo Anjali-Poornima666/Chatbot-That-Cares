@@ -1,0 +1,28 @@
+A Chatbot That Actually Cares
+
+1. Downloading the data
+-- Download the train and valid csv files from the ED dataset homepage https://paperswithcode.com/dataset/empatheticdialogues
+
+2. Preprocessing the csv files
+-- Run the script
+python data/clean_csv.py --data_path '<path for the files>'
+-- this script outputs a cleaned version of train and valid csv files
+
+3. Tokenization and saving the data as pickle files
+-- Run the script
+python src/tokenize_data.py --data_path '<path for the cleaned csv files>' --prefix '<train/valid>' --model '<gpt2 model need to be specified>'
+-- This script provides the .pckle files for train and valid dialouges token ids
+
+4. Check the arguments for training in config.yaml
+
+5. Run the training file to start training
+-- Run the script
+python trainer.py
+-- Best model will be saved in models directory, logger will be saved in experiments folder and if wandb logging is enabled, wandb logs the metrics
+
+6. Chcek the arguments for inference in inference_config.yaml and specify the checkpoint
+
+7. Run the inference code
+--Run the script
+python inference.py
+-- You can start chatting with the chatbot
